@@ -1,4 +1,9 @@
-<h1>{{ title }}</h1>
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+<h1 class="display">{{ title }}</h1>
 {# Twig est un langage de rendu, un moteur de template, qui permet de traiter et d'afficher les données transmit par le controller sur les différents template #}
 {# Twig est intégrer automatiquement au framework Symfony #}
 {# title : variable TWIG qui est transmit par le controller, par la méthode home() #}
@@ -46,3 +51,5 @@ N'ayant pas ou peu de prédateurs, le kangourou prolifère sur le continent aust
 
 La chasse aux kangourous
 Il est reproché au kangourou de détruire les cultures et de provoquer de nombreux accidents de la route. En réponse, l’État a autorisé les éleveurs à faire appel à des chasseurs pour éliminer les groupes divagant sur leurs terres. Si les marsupiaux abattus peuvent être commercialisés pour leur viande, l’industrie l’agro-alimentaire en achète de moins en moins, suite aux campagnes menées par les organisations de défense des animaux. En 2017, sur un quota de chasse s’élevant à 7,2 millions de kangourous, moins de 1,5 million ont été tués.<br/><br/>
+
+{% endblock %}
