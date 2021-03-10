@@ -23,12 +23,25 @@ class BlogController extends AbstractController
     }
 
     /**
+     * 
+     * Methode permettant d'afficher tout la liste des articles stockés en BDD
+     * 
      * @Route("/blog", name="blog")
      */
     public function index(): Response
     {
         return $this->render('blog/index.html.twig', [
-            'controller_name' => 'BlogController',
+            'title' => 'Listes des Articles',
         ]);
+    }
+
+    /**
+     * methode permettant dafficher le details d'un articles 
+     * 
+     * @Route("/blog/12", name="blog_show")
+     */
+    public function show(): Response
+    {
+        return $this->render('blog/show.html.twig');
     }
 }
