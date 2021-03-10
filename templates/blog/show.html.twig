@@ -1,37 +1,32 @@
-{% extends "base.html.twig" %}
-{# On hérite du gabarit de base (header, footer etc...) #}
+{% extends 'base.html.twig' %}
 
 {% block title %}
-    Détail de l'article
+    Détails de l'article
 {% endblock %}
 
-{# On intégre le contenu du template dans la block 'body' de base.html.twig #}
 {% block body %}
 
-    <h1 class="display-4 text-center my-5">Détail de l'article 12</h1>
+    <h1 class="display-4 text-center my-5">Détails de l'article {{ articleTwig.id }} </h1>
 
-    {# <div class="album py-5 bg-light"> #}
+    <div class="album py-5 bg-light">
+
         <div class="row">
 
-            <div class="col-md-8 mx-auto">
-                <div class="card mb-4 shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          <div class="col-md-8 mx-auto">
+            <div class="card mb-4 shadow-sm">
+              <img src="{{ articleTwig.image | replace({'200/300' : '1000/300'}) }}" alt="{{ articleTwig.title }}">
 
-                    <div class="card-body">
-                    <p class="card-text">Le kangourou, pas très organisé
-Cet animal pacifique aime vivre dans un troupeau de 8 ou 10 individus maximum, comprenant un mâle, une ou plusieurs femelles et leurs petits. Il n’est pas rare non plus de rencontrer des groupes de deux à trois membres ou de vieux kangourous seuls car le marsupial ne suit pas une organisation stricte dans sa vie en communauté. Lorsque les pâturages prospèrent grâce à la pluie, les animaux se montrent assez individualistes mais deviennent grégaires lorsque la sécheresse raréfie la nourriture. Ils se réunissent alors en troupeaux de plusieurs dizaines d’individus et parcourent des kilomètres pour rejoindre les plaines où subsistent, autour de points d'eau, des arbres, de l’herbage et de l'ombre.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                        <small class="text-muted">9 mins</small>
-                    </div>
-                    </div>
+              <div class="card-body">
+                <h4 class="text-center">{{ articleTwig.title }}</h4><hr>
+                <p class="card-text"> {{ articleTwig.content | striptags }}</p>
+                <div class="d-flex justify-content-end align-items-center">
+                  <small class="text-muted"> Posté le : {{ articleTwig.createAt | date("d/m/Y") }} à {{ articleTwig.createAt | date("H:i:s")}} </small>
                 </div>
+              </div>
             </div>
+          </div>
 
         </div>
-    {# </div> #}
-    
+    </div>
+
 {% endblock %}
