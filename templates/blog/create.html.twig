@@ -4,13 +4,23 @@
 
 {% block title %}
         creation d'un nouveau site
+
 {% endblock %}
 
 
 
 {% block body %}
 
+<h1 class="display-4 text-center my-5">
+    {% if editMode %} {# Si la variable editMode renvoie TRUE, cela veut dire que l'article existe, donc c'est une modif#}
+            Modification de l'article n° {{editMode}}
+    {% else %} {# Sinon, l'id n'est pas defini donc c'est la creation d'un article #}
+            Création d'un nouvel article
+    {% endif %}
 
+    </h1>
+
+{#
         <h1 class="display-4 text-center my-5">Creation d'un Nouvel article</h1>
 
         <form method="post" class="col md-5 text-center">
@@ -30,6 +40,29 @@
   </div>
   <button type="submit" class="btn btn-secondary mb-5">Enregistrer l'article</button>
 </form>
+
+
+{{ form(formArticle) }}#}
+
+
+{{ form_start(formArticle, {'attr' : {'class' : 'col-md-5 mx-auto'} }) }}
+
+        {{ form_row(formArticle.title, {'attr' : {'placeholder' : "Saisir le titre de l'article"}, 'label' : "Titre de l'article :" }) }}
+        {{ form_row(formArticle.content, {'attr' : {'placeholder' : "Saisir le contenu de l'article", 'rows' : 15 }, 'label' : "Contenu de l'article :" }) }}
+        {{ form_row(formArticle.image , {'attr' : {'placeholder' : "Saisir l'URL de l'image"}, 'label' : "URL de l'image :" }) }}
+
+        <button type="submit" class="btn btn-secondary">
+
+{% if editMode %}
+    MODIFIER
+{% else %}
+    ENREGISTRER
+{% endif %}
+
+</button>
+
+
+{{ form_end(formArticle) }}
 
 
 {% endblock %}
